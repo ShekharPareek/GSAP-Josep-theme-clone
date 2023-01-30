@@ -39,7 +39,7 @@ const init = () => {
   });
 
   Array.from(sections)
-    .slice(1)
+    .slice(2)
     .forEach((section) => {
       gsap.set(section.querySelectorAll("h1"), {
         y: 200,
