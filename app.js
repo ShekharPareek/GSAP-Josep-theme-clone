@@ -90,7 +90,7 @@ const init = () => {
       delay: state !== "prev" && 1,
     });
 
-    imgPropsAnim.restart(true);
+    // imgPropsAnim.restart(true);
   };
 
   const toggleCircles = (state) => {
@@ -125,61 +125,59 @@ const init = () => {
   };
 
   const sectionOutAnim = (sectionIndex) => {
-    return gsap
-      .timeline()
-      .to(
-        sections[sectionIndex].querySelectorAll("h1"),
-        {
-          y: 200,
-          duration: ELEMENT_DURATION,
-          onComplete: () => {
-            if (sectionIndex === 4) {
-              toggleContentBackground("prev");
-            }
+    return (
+      gsap
+        .timeline()
+        .to(
+          sections[sectionIndex].querySelectorAll("h1"),
+          {
+            y: 300,
+            duration: ELEMENT_DURATION,
+            onComplete: () => {
+              if (sectionIndex === 4) {
+                toggleContentBackground("prev");
+              }
+            },
           },
-        },
-        0
-      )
-      .to(
-        sections[sectionIndex].querySelector("p"),
-        {
-          y: 200,
-          opacity: 0,
-          duration: ELEMENT_DURATION,
-        },
-        0
-      )
-      .to(
-        sections[sectionIndex].querySelector(".image-wrapper .hand-and-phone"),
-        {
-          rotate: 0,
-          duration: 0.5,
-          onComplete: () => {
-            if (sectionIndex === 1) {
-              toggleCircles("prev");
-            }
+          0
+        )
+        .to(
+          sections[sectionIndex].querySelector("p"),
+          {
+            y: 200,
+            opacity: 0,
+            duration: ELEMENT_DURATION,
           },
-        },
-        0.5
-      )
-      .to(
-        sections[sectionIndex].querySelector(".image-wrapper"),
-        {
-          y: 100,
-          opacity: 0,
-          ease: "power4.out",
-          duration: 1,
-        },
-        0.5
-      )
-      .to(
-        sections[sectionIndex],
-        {
+          0
+        )
+        // .to(
+        //   sections[sectionIndex].querySelector(".image-wrapper .hand-and-phone"),
+        //   {
+        //     rotate: 20,
+        //     duration: 0.5,
+        //     onComplete: () => {
+        //       if (sectionIndex === 1) {
+        //         toggleCircles("prev");
+        //       }
+        //     },
+        //   },
+        //   0.5
+        // )
+        .to(
+          sections[sectionIndex].querySelector(".image-wrapper"),
+          {
+            y: 100,
+            opacity: 0,
+            ease: "power4.out",
+            duration: 1.5,
+          },
+          0.5
+        )
+        .to(sections[sectionIndex], {
           opacity: 0,
           duration: ELEMENT_DURATION,
-        },
-        ">"
-      );
+        })
+    );
   };
 
   const sectionInAnim = (sectionIndex) => {
@@ -239,7 +237,7 @@ const init = () => {
       .to(
         sections[sectionIndex].querySelector(".image-wrapper .hand-and-phone"),
         {
-          rotate: -15,
+          rotate: -25,
           duration: 0.5,
         },
         ">-1"
@@ -267,8 +265,9 @@ const init = () => {
       .add(sectionInAnim(currentSection));
   };
 
+  //  Keep in the mind when to add content in the section
   const setProgress = () => {
-    const percent = (currentSection / (sections.length - 1)) * 100;
+    const percent = (currentSection / (sections.length - 2)) * 100;
     progressEl.style.width = percent + "%";
   };
 
@@ -332,7 +331,39 @@ const init = () => {
     scrub: 0.6,
   });
 };
-
+gsap.to(".animate-text", {
+  ease: Expo.easeInOut,
+  opacity: 1,
+  duration: 2.3,
+  stagger: 2,
+  repeat: 0,
+});
+gsap.to(".chaulk-line", {
+  ease: Expo.easeInOut,
+  width: "100%",
+  duration: 2,
+  delay: 2,
+  stagger: 2,
+  repeat: 0,
+});
+gsap.to(".animate-heading", {
+  ease: Expo.easeInOut,
+  width: "90%",
+  opacity: 1,
+  duration: 2,
+  delay: 2.5,
+  stagger: 2,
+  repeat: 0,
+});
+gsap.to(".animate-sub-heading", {
+  ease: Expo.easeInOut,
+  display: "block",
+  // margin: "10px",
+  duration: 2.5,
+  delay: 4.0,
+  stagger: 2,
+  repeat: 0,
+});
 initGsap = init();
 window.onload = initGsap;
 
