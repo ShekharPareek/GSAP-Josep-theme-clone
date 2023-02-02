@@ -131,7 +131,7 @@ const init = () => {
         .to(
           sections[sectionIndex].querySelectorAll("h1"),
           {
-            y: 300,
+            y: -230,
             duration: ELEMENT_DURATION,
             onComplete: () => {
               if (sectionIndex === 4) {
@@ -267,7 +267,7 @@ const init = () => {
 
   //  Keep in the mind when to add content in the section
   const setProgress = () => {
-    const percent = (currentSection / sections.length) * 100;
+    const percent = (currentSection / sections.length + 0.1) * 100;
     progressEl.style.width = percent + "%";
     console.log(percent);
   };
@@ -349,7 +349,7 @@ gsap.to(".chaulk-line", {
 });
 gsap.to(".animate-heading", {
   ease: Expo.easeInOut,
-  width: "100%",
+  width: "90%",
   opacity: 1,
   duration: 3.7,
   delay: 2.5,
@@ -360,8 +360,8 @@ gsap.to(".animate-sub-heading", {
   ease: Expo.easeInOut,
   display: "block",
   // margin: "10px",
-  duration: 4.5,
-  delay: 4.0,
+  duration: 4.0,
+  delay: 2,
   stagger: 2,
   repeat: 0,
 });
@@ -377,7 +377,7 @@ gsap.to("footer", {
   ease: Bounce.easeOut,
   left: "-24%",
   duration: 2,
-  delay: 1.7,
+  delay: 1.5,
   stagger: 2,
   repeat: 0,
 });
