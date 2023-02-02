@@ -267,8 +267,9 @@ const init = () => {
 
   //  Keep in the mind when to add content in the section
   const setProgress = () => {
-    const percent = (currentSection / (sections.length - 2)) * 100;
+    const percent = (currentSection / sections.length) * 100;
     progressEl.style.width = percent + "%";
+    console.log(percent);
   };
 
   //Jump to next/prev section when user scrolls
@@ -334,23 +335,23 @@ const init = () => {
 gsap.to(".animate-text", {
   ease: Expo.easeInOut,
   opacity: 1,
-  duration: 2.3,
+  duration: 3.0,
   stagger: 2,
   repeat: 0,
 });
 gsap.to(".chaulk-line", {
   ease: Expo.easeInOut,
   width: "100%",
-  duration: 2,
+  duration: 3.4,
   delay: 2,
   stagger: 2,
   repeat: 0,
 });
 gsap.to(".animate-heading", {
   ease: Expo.easeInOut,
-  width: "90%",
+  width: "100%",
   opacity: 1,
-  duration: 2,
+  duration: 3.7,
   delay: 2.5,
   stagger: 2,
   repeat: 0,
@@ -359,12 +360,26 @@ gsap.to(".animate-sub-heading", {
   ease: Expo.easeInOut,
   display: "block",
   // margin: "10px",
-  duration: 2.5,
+  duration: 4.5,
   delay: 4.0,
+  stagger: 2,
+  repeat: 0,
+});
+gsap.to(".img-container", {
+  ease: Expo.easeInOut,
+  opacity: 1,
+  duration: 5.0,
+  delay: 2,
+  stagger: 2,
+  repeat: 0,
+});
+gsap.to("footer", {
+  ease: Bounce.easeOut,
+  left: "-24%",
+  duration: 2,
+  delay: 1.7,
   stagger: 2,
   repeat: 0,
 });
 initGsap = init();
 window.onload = initGsap;
-
-//  to disable the scroll behaviour hear the scroll // Set properties of section in viewport using GSAP on first page load
