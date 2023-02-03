@@ -1,12 +1,17 @@
-const cursorRounded = document.querySelector(".cursor-cyclinder");
+const cursor = document.querySelector(".cursor-cyclinder");
 
 const moveCursor = (e) => {
   const mouseY = e.clientY;
   const mouseX = e.clientX;
-
-  cursorRounded.style.transform = `translate3d(${mouseX}px, ${mouseY}px, 0)`;
-
-  cursorPointed.style.transform = `translate3d(${mouseX}px, ${mouseY}px, 0)`;
+  cursor.style.transform = `translate3d(calc(${mouseX}px - 50%), calc(${mouseY}px - 50%), 0)`;
 };
 
-window.addEventListener("mousemove", moveCursor);
+document.addEventListener("mousemove", moveCursor);
+
+window.addEventListener("click", () => {
+  if (cursor.classList.contains("click")) {
+    cursor.classList.remove("click");
+  } else {
+    cursor.classList.add("click");
+  }
+});
